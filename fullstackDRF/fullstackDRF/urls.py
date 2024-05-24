@@ -1,5 +1,5 @@
 """
-URL configuration for apidev project.
+URL configuration for fullstackDRF project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
@@ -16,12 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from api import views
+from auth11 import views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('friuts/',views.item_list,name="item_list"),
-    path('show_api_data_in_front/',views.show_api_data_in_front,name="show_api_data_in_front"),
-    path('',views.register,name="item_list")
-   
+    path('',views.home,name='home'),
+    path('signup',views.signup,name='signup'),
+    path('loginpage',views.loginpage,name='loginpage')
+
 
 ]

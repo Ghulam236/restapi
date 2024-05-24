@@ -19,5 +19,23 @@ def show_api_data_in_front(request):
     return render(request,'home.html',context)
 
 
+from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import render, redirect
+from .forms import RegistrationForm
+
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        # form = RegistrationForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            # Redirect to login page or some other page upon successful registration
+            return redirect('login')
+    else:
+        form = UserCreationForm()
+        # form = RegistrationForm()
+
+    return render(request, 'register.html', {'form': form})
 
 
